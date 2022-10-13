@@ -1,9 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
-  template: `<div>Hello {{value}}</div>`,
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  value = 'World';
+  message = '';
+  assets = '';
+
+  constructor(private http: HttpClient) {
+    this.http.get('/api/getAllAssets').subscribe((resp: any) => {
+      this.assets = resp;
+      console.log(JSON.stringify(resp))
+    });
+  }
+
+  
 }
