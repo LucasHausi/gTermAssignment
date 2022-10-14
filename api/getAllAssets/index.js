@@ -40,12 +40,12 @@ async function getAll(bToken)
 {
     try{
             var data = JSON.stringify({
-                "keywords": "QueriesByState"
+                "keywords": "*"
             });
 
         var config = {
         method: 'post',
-        url: 'https://pvlab-pv.purview.azure.com/catalog/api/search/suggest?api-version=2022-03-01-preview',
+        url: 'https://pvlab-pv.purview.azure.com/catalog/api/search/query?api-version=2022-03-01-preview',
         headers: { 
             'Authorization': 'Bearer '+bToken, 
             'Content-Type': 'application/json'
@@ -83,7 +83,6 @@ module.exports = async function (context, req) {
     
     bToken = await getBearerToken();
     await getAll(bToken)
-    //console.log(Assets);
     context.res = {
         body: Assets,
         headers: {

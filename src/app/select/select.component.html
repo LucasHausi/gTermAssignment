@@ -1,0 +1,12 @@
+<div class="container">
+    <select class="form-select d-inline w-50" title="GlossaryTerms" id="GlossaryTerms{{refID}}">
+        <option *ngFor="let asset of gTerms">
+            {{asset.name}} 
+        </option>
+    </select>
+    <select class="form-select d-inline w-50" title="DataAssets" id="DataAssets{{refID}}">
+        <option *ngFor="let asset of dAssets">
+            {{asset.name}}
+        </option>
+    </select>
+</div>
